@@ -30,6 +30,20 @@ const Berita = {
       return error
     }
   },
+
+  getBeritaNasional: async (req, res) => {
+    const { page = 1 } = req.query
+
+    try {
+      const response = await fetchService(
+        `${baseUrl}/category/berita/berita-nasional/page/${page}`,
+        res,
+      )
+      return Load.articles(req, res, response)
+    } catch (error) {
+      return error
+    }
+  },
 }
 
 export default Berita
