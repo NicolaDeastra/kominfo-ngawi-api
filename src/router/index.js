@@ -1,6 +1,7 @@
 import express from 'express'
 
 import Controller from '../controller/detail'
+import Search from '../controller/search'
 import Berita from '../controller/berita'
 import Article from '../controller/article'
 
@@ -11,6 +12,7 @@ router.get('/berita-kominfo', Berita.getBeritaKominfo)
 router.get('/berita-nasional', Berita.getBeritaNasional)
 
 router.get('/article', Article.getArticle)
+router.get('/search', Search.getSearch)
 
 router.get('/detail/:key', Controller.getDetail)
 

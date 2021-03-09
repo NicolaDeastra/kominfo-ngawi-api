@@ -47,6 +47,7 @@ const Load = {
       const $ = cheerio.load(response.data)
 
       const element = $('#the-post')
+      const elementPost = $('.entry')
       const relatedElement = $('#related_posts')
 
       let object = {}
@@ -56,14 +57,15 @@ const Load = {
       let time
       let content = []
       let related = []
+      let figure = []
 
       title = element.find('.post-inner h1').text()
       img = element.find('.single-post-thumb img').attr('src')
       imgDesc = element.find('.single-post-caption').text()
       time = element.find('.post-meta .tie-date').text()
 
-      element.find('.entry').each((i, e) => {
-        let text = $(e).find('p').text()
+      elementPost.find('p').each((i, e) => {
+        let text = $(e).text()
 
         content.push(text)
       })
@@ -88,6 +90,7 @@ const Load = {
       object.img = img
       object.imgDesc = imgDesc
       object.time = time
+      object.figure = figure
       object.content = content.filter((x) => x)
       object.related = related
 
